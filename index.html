@@ -1,125 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Matías Ceconi | Entrenador & Blog</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5faff;
-      color: #1a1a1a;
-    }
-    header {
-      background-color: #004c99;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-    nav {
-      background-color: #0073e6;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem 0;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
-      color: #004c99;
-      border-bottom: 2px solid #0073e6;
-      padding-bottom: 0.5rem;
-    }
-    footer {
-      background-color: #004c99;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    .cv-item, .experience-item, .blog-post, .service {
-      margin-bottom: 1.5rem;
-    }
-    .blog-post h3, .service h3 {
-      margin-top: 0;
-      color: #0073e6;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Matías Ceconi - Entrenador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        header {
+            background-color: #004c99;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        header img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 100px;
+            margin-top: 1rem;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1, h2 {
+            color: #004c99;
+        }
+        .btn-wsp {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        footer {
+            background-color: #004c99;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Matías Ceconi</h1>
-    <p>Entrenador de Alto Rendimiento | Blogger | Preparador Físico</p>
-  </header>
+    <header>
+        <h1>Matías Ceconi</h1>
+        <p>Entrenador Personal - Fútbol de Alto Rendimiento</p>
+        <img src="foto1.jpeg" alt="Foto de Matías">
+        <br>
+        <a class="btn-wsp" href="https://wa.me/5491132679347" target="_blank">Escribime por WhatsApp</a>
+    </header>
 
-  <nav>
-    <a href="#cv">CV</a>
-    <a href="#blog">Blog</a>
-    <a href="#servicios">Entrenamiento</a>
-    <a href="#experiencia">Experiencia</a>
-  </nav>
+    <section>
+        <h2>Sobre mí</h2>
+        <p>Soy preparador físico especializado en el entrenamiento de futbolistas de alto rendimiento. Actualmente trabajo como preparador físico de la Reserva de Defensa y Justicia. Anteriormente, formé parte del área de preparación física del fútbol infantil de Racing Club durante cuatro años. Mi objetivo es potenciar el rendimiento de cada jugador con un enfoque integral, profesional y personalizado.</p>
+        
+        <h2>Servicios Online</h2>
+        <ul>
+            <li>Planes de entrenamiento personalizados</li>
+            <li>Evaluaciones físicas online</li>
+            <li>Asesoramiento en prevención de lesiones</li>
+            <li>Seguimiento semanal y contacto directo</li>
+        </ul>
 
-  <section id="cv">
-    <h2>Currículum Vitae</h2>
-    <div class="cv-item">
-      <p><strong>Nombre:</strong> Matías Ceconi</p>
-      <p><strong>Profesión:</strong> Preparador Físico especializado en fútbol de alto rendimiento</p>
-      <p><strong>Educación:</strong> Lic. en Educación Física | Cursos de GPS deportivo | Certificaciones UEFA</p>
-      <p><strong>Idiomas:</strong> Español, Inglés</p>
-    </div>
-  </section>
+        <h2>Blog Personal</h2>
+        <div>
+            <h3>¿Cómo estructurar la semana de entrenamiento?</h3>
+            <p>En este artículo te cuento cómo organizo una semana típica de trabajo para futbolistas según el calendario de competencia, combinando cargas, recuperación y estímulos clave.</p>
+        </div>
+    </section>
 
-  <section id="blog">
-    <h2>Blog Personal</h2>
-    <div class="blog-post">
-      <h3>Cómo diseñar una semana ideal de entrenamiento en fútbol</h3>
-      <p>Organizar la carga, trabajar la fuerza, y lograr una recuperación óptima. Te cuento cómo lo hago con mis jugadores...</p>
-    </div>
-    <div class="blog-post">
-      <h3>GPS en el fútbol moderno: claves para aprovechar los datos</h3>
-      <p>El seguimiento GPS no es solo correr más. Analizamos potencia metabólica, sprint, aceleraciones y más.</p>
-    </div>
-  </section>
-
-  <section id="servicios">
-    <h2>Entrenamiento Online</h2>
-    <div class="service">
-      <h3>Planes personalizados</h3>
-      <p>Planificación semanal individual para futbolistas. Basado en test inicial, objetivos y posición.</p>
-    </div>
-    <div class="service">
-      <h3>Evaluaciones remotas</h3>
-      <p>Evaluamos fuerza, resistencia y velocidad a distancia con protocolos estandarizados y feedback por video.</p>
-    </div>
-    <div class="service">
-      <h3>Asesoramiento GPS</h3>
-      <p>Interpretación de datos de GPS y creación de dashboards en Excel para clubes o jugadores individuales.</p>
-    </div>
-  </section>
-
-  <section id="experiencia">
-    <h2>Experiencia Laboral</h2>
-    <div class="experience-item">
-      <p><strong>Club Atlético X</strong> (2020–2024) – Preparador físico de la Reserva</p>
-      <p><strong>Consultor independiente</strong> – Planificación y análisis GPS para futbolistas profesionales</p>
-      <p><strong>Profesor universitario</strong> – Cátedra de entrenamiento deportivo</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Matías Ceconi | Contacto: matias@email.com</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 Matías Ceconi | Todos los derechos reservados</p>
+    </footer>
 </body>
 </html>
