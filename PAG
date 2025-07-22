@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matías Ceconi | Alto Rendimiento</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <img src="img/perfil.jpg" alt="Foto de Matías Ceconi" class="foto" />
+    <h1>Matías Ceconi</h1>
+    <p>Preparador físico de la Reserva de Defensa y Justicia</p>
+    <nav>
+      <a href="#cv">CV</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="presentacion">
+    <h2>Sobre mí</h2>
+    <p>Especialista en preparación física aplicada al fútbol de alto rendimiento. Experiencia en Racing (infantiles) y actualmente en Defensa y Justicia (Reserva).</p>
+  </section>
+
+  <section id="cv">
+    <h2>Currículum</h2>
+    <ul>
+      <li><strong>2024 - Presente:</strong> Preparador físico de la Reserva - Defensa y Justicia</li>
+      <li><strong>2022 - 2023:</strong> Preparador físico en fútbol infantil - Racing Club</li>
+      <li><strong>Licenciado en Educación Física</strong> – Universidad Nacional</li>
+    </ul>
+  </section>
+
+  <section id="servicios">
+    <h2>Entrenamiento Online de Alto Rendimiento</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="img/entrenamiento.jpg" alt="Entrenamiento personalizado" />
+        <h3>Planes Individuales</h3>
+        <p>Programas personalizados para futbolistas profesionales o amateur.</p>
+      </div>
+      <div class="card">
+        <img src="img/gps.jpg" alt="Seguimiento con GPS" />
+        <h3>Seguimiento con GPS</h3>
+        <p>Monitoreo, análisis de cargas y ajustes por posición y perfil.</p>
+      </div>
+      <div class="card">
+        <h3>Consultoría</h3>
+        <p>Planificación anual, sesiones específicas, tecnología y prevención.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Blog</h2>
+    <p>Artículos sobre entrenamiento, prevención, GPS y ciencia aplicada al fútbol. (Próximamente)</p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <ul>
+      <li>📧 <a href="mailto:matiasceconi@gmail.com">matiasceconi@gmail.com</a></li>
+      <li>📱 <a href="https://wa.me/5491132679347">+54 9 11 3267 9347</a></li>
+      <li>📸 <a href="https://instagram.com/tuusuario">@tuusuario</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Matías Ceconi - Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
