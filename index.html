@@ -5,19 +5,25 @@
     <title>Matías Ceconi - Entrenador</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
             background-color: #f7f9fc;
             color: #333;
         }
+
         header {
             background-color: #004c99;
             color: white;
             padding: 2rem 1rem;
             text-align: center;
         }
+
         header img {
             width: 160px;
             height: 160px;
@@ -25,14 +31,24 @@
             border-radius: 100px;
             margin-top: 1rem;
         }
+
         section {
             padding: 2rem;
-            max-width: 800px;
+            max-width: 1000px;
             margin: auto;
         }
+
         h1, h2 {
             color: #004c99;
+            margin-bottom: 1rem;
         }
+
+        h3 {
+            color: #004c99;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
         .btn-wsp {
             display: inline-block;
             background-color: #25D366;
@@ -42,13 +58,302 @@
             text-decoration: none;
             font-weight: bold;
             margin-top: 1rem;
+            transition: background-color 0.3s;
         }
-        footer {
+
+        .btn-wsp:hover {
+            background-color: #1da752;
+        }
+
+        /* ESTILOS PARA NOMBRES DE JUGADORES */
+        .player-name {
+            color: #004c99;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .player-name:hover {
+            background-color: #e0f0ff;
+            color: #003366;
+        }
+
+        /* CONTENEDOR DE JUGADORES EN GRID */
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .player-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 76, 153, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #004c99;
+        }
+
+        .player-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 76, 153, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .player-card-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #004c99;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-card-info {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.3rem 0;
+        }
+
+        .player-card-action {
+            margin-top: 1rem;
+        }
+
+        .btn-360 {
+            display: inline-block;
+            background-color: #004c99;
+            color: white;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-360:hover {
+            background-color: #003366;
+        }
+
+        /* MODAL PARA LA CARTA 360 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideDown 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #004c99;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #004c99;
+        }
+
+        .close-btn {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .carta-360-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .carta-360-content h3 {
+            grid-column: 1 / -1;
+            color: #004c99;
+            border-bottom: 1px solid #004c99;
+            padding-bottom: 0.5rem;
+        }
+
+        .competencias-grupo {
+            margin-bottom: 1rem;
+        }
+
+        .competencia-item {
+            margin-bottom: 1rem;
+        }
+
+        .competencia-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        .competencia-bar {
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            height: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .competencia-fill {
+            background: linear-gradient(90deg, #004c99 0%, #0066cc 100%);
+            height: 100%;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: width 0.5s ease;
+        }
+
+        .competencia-nota {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+            font-style: italic;
+        }
+
+        .datos-generales {
+            background-color: #f0f5ff;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+
+        .dato-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .dato-item:last-child {
+            border-bottom: none;
+        }
+
+        .dato-label {
+            font-weight: bold;
+            color: #004c99;
+        }
+
+        .dato-valor {
+            color: #333;
+        }
+
+        .resumen-ejecutivo {
+            background-color: #fff9e6;
+            padding: 1rem;
+            border-left: 4px solid #ffa500;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .resumen-ejecutivo h4 {
+            color: #ff8c00;
+            margin-bottom: 0.5rem;
+        }
+
+        .resumen-ejecutivo p {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .footer {
             background-color: #004c99;
             color: white;
             text-align: center;
             padding: 1rem;
             margin-top: 2rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .players-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carta-360-content {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 1rem;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .close-btn {
+                align-self: flex-end;
+            }
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -63,8 +368,9 @@
 
     <section>
         <h2>Sobre mí</h2>
-        <p>Soy preparador físico especializado en el entrenamiento de futbolistas de alto rendimiento. Actualmente trabajo como preparador físico de la Reserva de Defensa y Justicia. Anteriormente, formé parte del área de preparación física del fútbol infantil de Racing Club durante cuatro años. Mi objetivo es potenciar el rendimiento de cada jugador con un enfoque integral, profesional y personalizado.</p>
-        
+        <p>Soy preparador físico especializado en el entrenamiento de futbolistas de alto rendimiento. Actualmente trabajo como preparador físico de la Reserva de Defensa y Justicia.</p>
+        <p>Con más de 10 años de experiencia, he trabajado con varios jugadores como <span class="player-name" onclick="openModal360('juan-perez')">Juan Pérez</span> y <span class="player-name" onclick="openModal360('carlos-lopez')">Carlos López</span>, brindando seguimiento personalizado.</p>
+
         <h2>Servicios Online</h2>
         <ul>
             <li>Planes de entrenamiento personalizados</li>
@@ -73,15 +379,310 @@
             <li>Seguimiento semanal y contacto directo</li>
         </ul>
 
+        <h2>Jugadores en Seguimiento</h2>
+        <div class="players-grid">
+            <div class="player-card">
+                <div class="player-card-name">Juan Pérez</div>
+                <div class="player-card-info">🎯 Posición: Delantero</div>
+                <div class="player-card-info">👕 Edad: 25 años</div>
+                <div class="player-card-info">⚽ Club: Defensa y Justicia</div>
+                <div class="player-card-action">
+                    <button class="btn-360" onclick="openModal360('juan-perez')">Ver Carta 360°</button>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <div class="player-card-name">Carlos López</div>
+                <div class="player-card-info">🎯 Posición: Mediocampista</div>
+                <div class="player-card-info">👕 Edad: 28 años</div>
+                <div class="player-card-info">⚽ Club: Defensa y Justicia</div>
+                <div class="player-card-action">
+                    <button class="btn-360" onclick="openModal360('carlos-lopez')">Ver Carta 360°</button>
+                </div>
+            </div>
+
+            <div class="player-card">
+                <div class="player-card-name">Martín García</div>
+                <div class="player-card-info">🎯 Posición: Defensor</div>
+                <div class="player-card-info">👕 Edad: 26 años</div>
+                <div class="player-card-info">⚽ Club: Defensa y Justicia</div>
+                <div class="player-card-action">
+                    <button class="btn-360" onclick="openModal360('martin-garcia')">Ver Carta 360°</button>
+                </div>
+            </div>
+        </div>
+
         <h2>Blog Personal</h2>
         <div>
             <h3>¿Cómo estructurar la semana de entrenamiento?</h3>
             <p>En este artículo te cuento cómo organizo una semana típica de trabajo para futbolistas según el calendario de competencia, combinando cargas, recuperación y estímulos clave.</p>
+            <p>Las mejores metodologías que he aprendido con jugadores como <span class="player-name" onclick="openModal360('juan-perez')">Juan Pérez</span> han demostrado ser altamente efectivas.</p>
         </div>
     </section>
 
-    <footer>
+    <!-- MODAL PARA VER CARTA 360 -->
+    <div id="carta360Modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Carta 360° - Jugador</h2>
+                <button class="close-btn" onclick="closeModal360()">&times;</button>
+            </div>
+            <div id="carta360Body"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
         <p>&copy; 2025 Matías Ceconi | Todos los derechos reservados</p>
     </footer>
+
+    <script>
+        // BASE DE DATOS DE JUGADORES CON SUS CARTAS 360
+        const jugadoresDB = {
+            'juan-perez': {
+                nombre: 'Juan Pérez',
+                posicion: 'Delantero',
+                edad: 25,
+                club: 'Defensa y Justicia',
+                nacimiento: '15/03/1999',
+                nacionalidad: 'Argentina',
+                altura: '1.82m',
+                peso: '78kg',
+                dorsal: 9,
+                competencias: {
+                    'Técnica': {
+                        puntaje: 9,
+                        nota: 'Excelente dominio del balón y primera tocada'
+                    },
+                    'Velocidad': {
+                        puntaje: 8,
+                        nota: 'Muy rápido en las aceleraciones'
+                    },
+                    'Resistencia': {
+                        puntaje: 8,
+                        nota: 'Buena continuidad durante los 90 minutos'
+                    },
+                    'Fuerza': {
+                        puntaje: 7,
+                        nota: 'Potencia en salto y remates'
+                    },
+                    'Decisión Táctica': {
+                        puntaje: 8,
+                        nota: 'Muy inteligente en la toma de decisiones'
+                    },
+                    'Capacidad Mental': {
+                        puntaje: 9,
+                        nota: 'Mentalidad ganadora y liderazgo positivo'
+                    },
+                    'Adaptabilidad': {
+                        puntaje: 8,
+                        nota: 'Se adapta rápidamente a los cambios tácticos'
+                    },
+                    'Compromiso': {
+                        puntaje: 10,
+                        nota: 'Entrega total en cada entrenamiento'
+                    }
+                },
+                resumen: 'Juan es un delantero completo con gran potencial. Destaca por su técnica, mentalidad y compromiso. Necesita mejorar la fuerza en algunos aspectos defensivos.'
+            },
+            'carlos-lopez': {
+                nombre: 'Carlos López',
+                posicion: 'Mediocampista',
+                edad: 28,
+                club: 'Defensa y Justicia',
+                nacimiento: '22/07/1996',
+                nacionalidad: 'Argentina',
+                altura: '1.78m',
+                peso: '75kg',
+                dorsal: 14,
+                competencias: {
+                    'Técnica': {
+                        puntaje: 8,
+                        nota: 'Dominio del balón excepcional'
+                    },
+                    'Velocidad': {
+                        puntaje: 7,
+                        nota: 'Velocidad promedio con buen timing'
+                    },
+                    'Resistencia': {
+                        puntaje: 9,
+                        nota: 'Excelente capacidad aeróbica'
+                    },
+                    'Fuerza': {
+                        puntaje: 8,
+                        nota: 'Fuerte en disputas y recuperaciones'
+                    },
+                    'Decisión Táctica': {
+                        puntaje: 9,
+                        nota: 'Visión de juego y distribución perfecta'
+                    },
+                    'Capacidad Mental': {
+                        puntaje: 8,
+                        nota: 'Líder en el mediocampo'
+                    },
+                    'Adaptabilidad': {
+                        puntaje: 9,
+                        nota: 'Se adapta a diferentes sistemas de juego'
+                    },
+                    'Compromiso': {
+                        puntaje: 9,
+                        nota: 'Profesional con gran dedicación'
+                    }
+                },
+                resumen: 'Carlos es un mediocampista maduro y versátil. Su resistencia, visión de juego y liderazgo lo hacen fundamental. Continuar mejorando la velocidad explosiva.'
+            },
+            'martin-garcia': {
+                nombre: 'Martín García',
+                posicion: 'Defensor',
+                edad: 26,
+                club: 'Defensa y Justicia',
+                nacimiento: '10/11/1997',
+                nacionalidad: 'Argentina',
+                altura: '1.86m',
+                peso: '81kg',
+                dorsal: 4,
+                competencias: {
+                    'Técnica': {
+                        puntaje: 7,
+                        nota: 'Buen juego con el balón'
+                    },
+                    'Velocidad': {
+                        puntaje: 7,
+                        nota: 'Buen desplazamiento lateral'
+                    },
+                    'Resistencia': {
+                        puntaje: 8,
+                        nota: 'Muy resistente en los 90 minutos'
+                    },
+                    'Fuerza': {
+                        puntaje: 9,
+                        nota: 'Muy potente en disputas aéreas'
+                    },
+                    'Decisión Táctica': {
+                        puntaje: 8,
+                        nota: 'Buen posicionamiento defensivo'
+                    },
+                    'Capacidad Mental': {
+                        puntaje: 8,
+                        nota: 'Seguro y concentrado'
+                    },
+                    'Adaptabilidad': {
+                        puntaje: 7,
+                        nota: 'Se adapta a diferentes esquemas'
+                    },
+                    'Compromiso': {
+                        puntaje: 9,
+                        nota: 'Defensiva total y compromiso constante'
+                    }
+                },
+                resumen: 'Martín es un defensor sólido y comprometido. Su fuerza aérea y defensa lo hacen confiable. Trabajar en mejorar velocidad y dinámica defensiva.'
+            }
+        };
+
+        // FUNCIÓN PARA ABRIR EL MODAL Y MOSTRAR CARTA 360
+        function openModal360(playerId) {
+            const jugador = jugadoresDB[playerId];
+            if (!jugador) {
+                alert('Jugador no encontrado');
+                return;
+            }
+
+            document.getElementById('modalTitle').textContent = `Carta 360° - ${jugador.nombre}`;
+
+            let html = `
+                <div class="datos-generales">
+                    <h3 style="margin-top: 0;">Datos Generales</h3>
+                    <div class="dato-item">
+                        <span class="dato-label">Nombre:</span>
+                        <span class="dato-valor">${jugador.nombre}</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Posición:</span>
+                        <span class="dato-valor">${jugador.posicion}</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Edad:</span>
+                        <span class="dato-valor">${jugador.edad} años</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Fecha de Nacimiento:</span>
+                        <span class="dato-valor">${jugador.nacimiento}</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Nacionalidad:</span>
+                        <span class="dato-valor">${jugador.nacionalidad}</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Altura:</span>
+                        <span class="dato-valor">${jugador.altura}</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Peso:</span>
+                        <span class="dato-valor">${jugador.peso}</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Dorsal:</span>
+                        <span class="dato-valor">#${jugador.dorsal}</span>
+                    </div>
+                    <div class="dato-item">
+                        <span class="dato-label">Club:</span>
+                        <span class="dato-valor">${jugador.club}</span>
+                    </div>
+                </div>
+
+                <h3>Evaluación de Competencias</h3>
+                <div class="carta-360-content">
+            `;
+
+            // Mostrar competencias en dos columnas
+            const competenciasArray = Object.entries(jugador.competencias);
+            competenciasArray.forEach(([competencia, datos]) => {
+                html += `
+                    <div class="competencia-item">
+                        <div class="competencia-label">
+                            <span>${competencia}</span>
+                            <span>${datos.puntaje}/10</span>
+                        </div>
+                        <div class="competencia-bar">
+                            <div class="competencia-fill" style="width: ${datos.puntaje * 10}%">
+                                ${datos.puntaje > 5 ? datos.puntaje : ''}
+                            </div>
+                        </div>
+                        <div class="competencia-nota">${datos.nota}</div>
+                    </div>
+                `;
+            });
+
+            html += `
+                </div>
+                <div class="resumen-ejecutivo">
+                    <h4>📋 Resumen Ejecutivo</h4>
+                    <p>${jugador.resumen}</p>
+                </div>
+            `;
+
+            document.getElementById('carta360Body').innerHTML = html;
+            document.getElementById('carta360Modal').style.display = 'block';
+        }
+
+        // FUNCIÓN PARA CERRAR EL MODAL
+        function closeModal360() {
+            document.getElementById('carta360Modal').style.display = 'none';
+        }
+
+        // CERRAR MODAL AL HACER CLICK FUERA
+        window.onclick = function(event) {
+            const modal = document.getElementById('carta360Modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // CERRAR MODAL CON TECLA ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal360();
+            }
+        });
+    </script>
 </body>
 </html>
